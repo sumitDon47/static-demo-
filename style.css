@@ -7,79 +7,124 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-.container {
+/* Floating hearts background */
+.hearts::before,
+.hearts::after {
+  content: "❤️ 💕 💖 💗 💓";
+  position: absolute;
+  font-size: 2rem;
+  animation: float 15s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-100vh); }
+}
+
+/* Proposal card */
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 420px;
   text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
 }
 
 h1 {
-  font-size: 2.5rem;
   color: #b0003a;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
 }
 
+.question {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+/* Buttons */
 .buttons {
   position: relative;
-  width: 300px;
-  height: 150px;
-  margin: auto;
+  height: 120px;
 }
 
 button {
-  padding: 15px 30px;
-  font-size: 1.2rem;
+  padding: 14px 26px;
   border: none;
   border-radius: 30px;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 
 #yesBtn {
-  background: #ff3366;
+  background: #ff4d6d;
   color: white;
+  box-shadow: 0 8px 20px rgba(255,77,109,0.4);
 }
 
 #noBtn {
-  background: #ccc;
   position: absolute;
   right: 0;
+  background: #ddd;
 }
 
 /* Roses page */
-
 .roses-page {
-  background: #ffebee;
-  overflow: hidden;
+  background: radial-gradient(circle, #ff758c, #ff7eb3);
 }
 
-.love-text {
-  position: absolute;
-  top: 40%;
-  width: 100%;
+.love-box {
+  background: rgba(255,255,255,0.9);
+  padding: 40px;
+  border-radius: 25px;
   text-align: center;
-  font-size: 2.5rem;
-  color: #b0003a;
+  max-width: 450px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
   z-index: 2;
 }
 
-.roses {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.love-box h1 {
+  font-size: 2.2rem;
 }
 
-.rose {
+.love-box p {
+  font-size: 1.1rem;
+  margin-top: 15px;
+  color: #444;
+}
+
+.signature {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #b0003a;
+}
+
+/* Floating hearts on roses page */
+.floating-heart {
   position: absolute;
-  top: -50px;
-  width: 30px;
-  height: 30px;
-  background: red;
-  border-radius: 50%;
+  top: -20px;
+  font-size: 24px;
   animation: fall linear infinite;
+}
+
+.floating-heart::after {
+  content: "🌹";
 }
 
 @keyframes fall {
