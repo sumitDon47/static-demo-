@@ -1,5 +1,6 @@
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
+const music = document.getElementById("bgMusic");
 
 noBtn.addEventListener("mouseenter", () => {
   const x = Math.random() * 200 - 100;
@@ -8,5 +9,11 @@ noBtn.addEventListener("mouseenter", () => {
 });
 
 yesBtn.addEventListener("click", () => {
-  window.location.href = "roses.html";
+  music.volume = 0.3;
+  music.play();
+
+  // small delay so mobile registers audio start
+  setTimeout(() => {
+    window.location.href = "roses.html";
+  }, 400);
 });
