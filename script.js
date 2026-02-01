@@ -2,6 +2,11 @@ const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const music = document.getElementById("bgMusic");
 
+// safety check
+if (!yesBtn || !noBtn || !music) {
+  console.error("Missing element: check IDs in HTML");
+}
+
 noBtn.addEventListener("mouseenter", () => {
   const x = Math.random() * 200 - 100;
   const y = Math.random() * 120 - 60;
@@ -10,9 +15,10 @@ noBtn.addEventListener("mouseenter", () => {
 
 yesBtn.addEventListener("click", () => {
   music.volume = 0.3;
-  music.play();
+  music.play().catch(() => {
+    console.log("Audio blocked, but continuing");
+  });
 
-  // small delay so mobile registers audio start
   setTimeout(() => {
     window.location.href = "roses.html";
   }, 400);
